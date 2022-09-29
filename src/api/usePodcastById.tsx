@@ -23,6 +23,7 @@ export const usePodcastById = (
     },
     {
       ...options,
+      enabled: id !== "",
       onSuccess(data) {
         options?.onSuccess?.(data);
         APICacheLocalStorage.setItem(`podcast-${id}`, data, Day);
