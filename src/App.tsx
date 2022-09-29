@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 import { RouteNavigateProvider } from "./contexts/RouteNavigateContext";
 import LayoutPodcast from "./layouts/Podcast/LayoutPodcast";
 
