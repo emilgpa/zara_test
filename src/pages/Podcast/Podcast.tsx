@@ -1,26 +1,8 @@
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
+import { Details, Episodes, TrackList } from "./Podcast.styled";
 import { Track } from "./PodcastTrack";
-
-const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-`;
-
-const Episodes = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-`;
-
-const TrackList = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
 
 const Podcast = () => {
   const { id = "" } = useParams<{ id: string }>();
@@ -28,12 +10,11 @@ const Podcast = () => {
   const { data } = usePodcastById(id, {
     suspense: false,
   });
-  const { data: feed, isFetching } = usePodcastFeed(
-    data?.results?.[0].feedUrl ?? "",
-    {
-      suspense: false,
-    }
-  );
+  // get feed
+  const feedUrl = data?.results?.[0].feedUrl ?? "";
+  const { data: feed, isFetching } = usePodcastFeed(feedUrl, {
+    suspense: false,
+  });
 
   // get all items (episodes)
   const items = feed?.querySelectorAll("channel item");

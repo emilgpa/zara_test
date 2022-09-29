@@ -1,24 +1,9 @@
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
 import { base64DecodeUrl } from "../../utils/encoding";
 import { removeCDATA } from "../../utils/html";
-
-const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Title = styled.h3`
-  font-size: 20px;
-`;
-
-const Description = styled.div``;
-
-const Audio = styled.audio`
-  margin-top: 24px;
-`;
+import { Audio, Description, Root, Title } from "./PodcastEpisode.styled";
 
 const PodcastEpisode = () => {
   const { id = "", episodeId: paramEpisodeId = "" } = useParams<{
@@ -42,6 +27,7 @@ const PodcastEpisode = () => {
   const episode = feed?.evaluate(`//item[guid/text()="${episodeId}"]`, feed);
   const node = episode?.iterateNext() as Element | null;
 
+  // data to display
   const title = node?.querySelector("title")?.textContent ?? "";
   const description = removeCDATA(
     node?.querySelector("description")?.textContent ?? ""
@@ -51,7 +37,7 @@ const PodcastEpisode = () => {
   const audioType = audio?.getAttribute("type") ?? "";
 
   if (isLoading) {
-    return <></>;
+    return <span>caragando...</span>;
   }
 
   return (

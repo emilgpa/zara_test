@@ -1,58 +1,19 @@
 import { Outlet, useParams } from "react-router-dom";
-import styled from "styled-components";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
 import { Divider } from "../../components/Divider";
 import { NavLink } from "../../components/NavLink";
 import { removeCDATA } from "../../utils/html";
 import { Layout } from "../Root/Layout";
-
-const Root = styled.div`
-  display: grid;
-  grid-template-columns: 250px auto;
-  margin: auto;
-  max-width: 950px;
-  margin: auto;
-  gap: 32px;
-`;
-
-const Aside = styled.aside`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  position: sticky;
-  top: 86px;
-  height: fit-content;
-
-  gap: 16px;
-`;
-
-const Logo = styled.img`
-  width: fit-content;
-  display: block;
-`;
-
-const ChannelLink = styled(NavLink)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-`;
-
-const Title = styled.span`
-  text-align: center;
-  font-size: 16px;
-`;
-
-const Author = styled.span`
-  text-align: center;
-  font-size: 14px;
-`;
-
-const Description = styled.div`
-  text-align: center;
-`;
+import {
+  Aside,
+  Author,
+  ChannelLink,
+  Description,
+  Logo,
+  Root,
+  Title,
+} from "./LayoutPodcast.styled";
 
 const LayoutPodcast = () => {
   const { id = "" } = useParams();

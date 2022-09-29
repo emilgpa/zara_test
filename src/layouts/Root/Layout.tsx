@@ -1,14 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { Root } from "./Layout.styled";
 import { LayoutHeader } from "./LayoutHeader";
 import { LayoutMain } from "./LayoutMain";
-
-const Root = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: auto;
-`;
 
 export const Layout = ({ children }: React.PropsWithChildren<unknown>) => {
   return (
