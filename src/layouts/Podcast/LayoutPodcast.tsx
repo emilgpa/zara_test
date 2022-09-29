@@ -1,10 +1,11 @@
-import { PropsWithChildren } from "react";
+import { Outlet, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
 import { Divider } from "../../components/Divider";
 import { NavLink } from "../../components/NavLink";
 import { removeCDATA } from "../../utils/html";
+import { Layout } from "../Root/Layout";
 
 const Root = styled.div`
   display: grid;
@@ -53,18 +54,13 @@ const Description = styled.div`
   text-align: center;
 `;
 
-interface LayoutPodcastProps {
-  id: string;
-}
+const LayoutPodcast = () => {
+  const { id = "" } = useParams();
 
-const LayoutPodcast = ({
-  id,
-  children,
-}: PropsWithChildren<LayoutPodcastProps>) => {
   const { data } = usePodcastById(id, {
     suspense: false,
   });
-  const { data: feed } = usePodcastFeed(data?.results?.[0].feedUrl ?? "", {
+  const { data: feed } = usePodcastFeed(data?.results?.[0]?.feedUrl ?? "", {
     suspense: false,
   });
 
@@ -77,25 +73,27 @@ const LayoutPodcast = ({
   );
 
   return (
-    <Root>
-      <Aside>
-        <NavLink to={`/podcast/${id}`}>
-          <Logo src={logo} />
-        </NavLink>
-        <Divider direction="h" color="white" />
-        <ChannelLink to={`/podcast/${id}`}>
-          <Title>{title}</Title>
-          <Author>by {author}</Author>
-        </ChannelLink>
-        <Divider direction="h" color="white" />
-        <Description
-          dangerouslySetInnerHTML={{
-            __html: description,
-          }}
-        />
-      </Aside>
-      {children}
-    </Root>
+    <Layout>
+      <Root>
+        <Aside>
+          <NavLink to={`/podcast/${id}`}>
+            <Logo src={logo} />
+          </NavLink>
+          <Divider direction="h" color="white" />
+          <ChannelLink to={`/podcast/${id}`}>
+            <Title>{title}</Title>
+            <Author>by {author}</Author>
+          </ChannelLink>
+          <Divider direction="h" color="white" />
+          <Description
+            dangerouslySetInnerHTML={{
+              __html: description,
+            }}
+          />
+        </Aside>
+        <Outlet />
+      </Root>
+    </Layout>
   );
 };
 

@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
-import LayoutPodcast from "../../layouts/Podcast/LayoutPodcast";
-import { Layout } from "../../layouts/Root/Layout";
 import { Track } from "./PodcastTrack";
 
 const Details = styled.div`
@@ -41,20 +39,16 @@ const Podcast = () => {
   const items = feed?.querySelectorAll("channel item");
 
   return (
-    <Layout>
-      <LayoutPodcast id={id}>
-        <Details>
-          <Episodes>Episodes: {data?.results?.[0]?.trackCount}</Episodes>
-          <TrackList>
-            {isFetching && <span>cargando...</span>}
-            {Array.from(items ?? []).map((p) => {
-              const uid = p.querySelector("guid")?.textContent;
-              return <Track key={uid} podcastId={id} item={p} />;
-            })}
-          </TrackList>
-        </Details>
-      </LayoutPodcast>
-    </Layout>
+    <Details>
+      <Episodes>Episodes: {data?.results?.[0]?.trackCount}</Episodes>
+      <TrackList>
+        {isFetching && <span>cargando...</span>}
+        {Array.from(items ?? []).map((p) => {
+          const uid = p.querySelector("guid")?.textContent;
+          return <Track key={uid} podcastId={id} item={p} />;
+        })}
+      </TrackList>
+    </Details>
   );
 };
 

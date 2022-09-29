@@ -2,8 +2,6 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
-import LayoutPodcast from "../../layouts/Podcast/LayoutPodcast";
-import { Layout } from "../../layouts/Root/Layout";
 import { base64DecodeUrl } from "../../utils/encoding";
 import { removeCDATA } from "../../utils/html";
 
@@ -57,22 +55,18 @@ const PodcastEpisode = () => {
   }
 
   return (
-    <Layout>
-      <LayoutPodcast id={id}>
-        <Root>
-          <Title>{title}</Title>
-          <Description
-            dangerouslySetInnerHTML={{
-              __html: description,
-            }}
-          />
-          <Audio controls>
-            <source src={audioUrl} type={audioType} />
-            Your browser does not support the audio tag.
-          </Audio>
-        </Root>
-      </LayoutPodcast>
-    </Layout>
+    <Root>
+      <Title>{title}</Title>
+      <Description
+        dangerouslySetInnerHTML={{
+          __html: description,
+        }}
+      />
+      <Audio controls>
+        <source src={audioUrl} type={audioType} />
+        Your browser does not support the audio tag.
+      </Audio>
+    </Root>
   );
 };
 
