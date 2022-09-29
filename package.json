@@ -1,0 +1,29 @@
+{
+  "name": "zara_test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.7.2",
+    "js-base64": "^3.7.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
+    "styled-components": "^5.3.6",
+    "whatwg-mimetype": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
+    "@types/whatwg-mimetype": "^3.0.0",
+    "@vitejs/plugin-react": "^2.1.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}
