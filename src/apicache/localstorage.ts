@@ -28,10 +28,15 @@ export class APICacheLocalStorage {
     if (cached) {
       const item = JSON.parse(cached) as APIItemCache<T>;
       if (Date.now() > item.maxAge) {
+        APICacheLocalStorage.removeItem(id);
         return null;
       }
       return item;
     }
     return null;
+  }
+
+  static removeItem(id: string) {
+    window.localStorage.removeItem(id);
   }
 }
