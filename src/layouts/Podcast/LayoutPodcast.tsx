@@ -1,8 +1,8 @@
 import { Outlet, useParams } from "react-router-dom";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
-import { Divider } from "../../components/Divider";
-import { NavLink } from "../../components/NavLink";
+import { Divider } from "../../components/Divider/Divider";
+import { NavLink } from "../../components/NavLink/NavLink";
 import { removeCDATA } from "../../utils/html";
 import { Layout } from "../Root/Layout";
 import {

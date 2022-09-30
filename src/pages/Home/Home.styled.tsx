@@ -4,7 +4,7 @@ export const Root = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 950px;
+  min-width: 820px;
 `;
 
 export const PodcastsList = styled.div`

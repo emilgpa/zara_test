@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { usePodcastById } from "../../api/usePodcastById";
 import { usePodcastFeed } from "../../api/usePodcastFeed";
-import { Details, Episodes, TrackList } from "./Podcast.styled";
-import { Track } from "./PodcastTrack";
+import { Details, Episodes } from "./Podcast.styled";
+import { PodcastTrackList } from "./PodcastTrackList";
 
 const Podcast = () => {
   const { id = "" } = useParams<{ id: string }>();
@@ -22,13 +22,11 @@ const Podcast = () => {
   return (
     <Details>
       <Episodes>Episodes: {data?.results?.[0]?.trackCount}</Episodes>
-      <TrackList>
-        {isFetching && <span>cargando...</span>}
-        {Array.from(items ?? []).map((p) => {
-          const uid = p.querySelector("guid")?.textContent;
-          return <Track key={uid} podcastId={id} item={p} />;
-        })}
-      </TrackList>
+      {isFetching ? (
+        <span>cargando...</span>
+      ) : (
+        <PodcastTrackList items={[...(items ?? [])]} podcastId={id} />
+      )}
     </Details>
   );
 };

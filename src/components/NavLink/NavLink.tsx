@@ -4,7 +4,7 @@ import {
   LinkProps,
   useLinkClickHandler,
 } from "react-router-dom";
-import { useRouteNavigateContext } from "../contexts/RouteNavigateContext";
+import { useRouteNavigateContext } from "../../contexts/RouteNavigateContext";
 
 interface NavLinkBaseProps {
   to: string;

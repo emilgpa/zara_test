@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { NavLink } from "../../components/NavLink";
+import { NavLink } from "../../components/NavLink/NavLink";
 import { HeaderHeight } from "../Root/LayoutHeader.styled";
 
 export const Root = styled.div`
   display: grid;
   grid-template-columns: 250px auto;
   margin: auto;
-  max-width: 950px;
+  max-width: 820px;
   margin: auto;
   gap: 32px;
 `;

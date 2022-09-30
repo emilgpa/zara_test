@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "../../components/NavLink";
+import { NavLink } from "../../components/NavLink/NavLink";
 
 export const HeaderHeight = 86;
 
