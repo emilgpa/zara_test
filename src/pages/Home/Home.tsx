@@ -43,7 +43,7 @@ const Home = () => {
       <Root>
         <Searcher>
           <BadgetPodcasts>{podcasts.length}</BadgetPodcasts>
-          <InputFilter onChange={onFilter} />
+          <InputFilter onChange={onFilter} placeholder="filter podcasts..." />
           {isPending && <SearcherIndicator>buscando...</SearcherIndicator>}
         </Searcher>
         <PodcastsList>
